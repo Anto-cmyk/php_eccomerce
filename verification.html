@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin//Verify</title>
+</head>
+
+<style>
+    *{
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
+    }
+    .container{
+        width: 90%;
+        align-items: center;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+    }
+    .title{
+        align-items: center;
+        font-size: 37px;
+        color: purple;
+        font: bold;
+        font-style: italic;
+        margin-top: 27px;
+        margin-bottom: 12px;
+    }
+    label{
+        font-size: 22px;
+        font-style: italic;
+        font-weight: 600;
+        margin-bottom: 10px;
+        margin-top: 23px;
+    }
+    .name,.key,.ten{
+        width: 30%;
+        padding-left: 6px;
+        height: 28px;
+    }
+    .verify{
+        width:fit-content;
+        height: 33px;
+        padding-left: 10px;
+        padding-right: 10px;
+        font-size: 26px;
+        cursor: pointer;
+        background-color: purple;
+        color: gainsboro;
+        font-weight: 600;
+        font-style: italic;
+        margin-top: 34px;
+        border-radius: 12px;
+    }
+    .notification{
+        color: red;
+        font-size: 25px;
+        font-style: italic;
+        font-weight: 700;
+        align-self: center;
+        justify-self: center;
+    }
+
+
+    @media (max-width:640px)
+    {
+        .title{
+            font-size: 27px;
+        }
+        .key,.name,.ten{
+            height: 22px;
+            border-radius: 4px;
+            width: 50%;
+        }
+        .container{
+            width: 100%;
+        }
+        label{
+            font-size: 19px;
+        }
+        .notification{
+            font-size: 14px;
+        }
+    }
+</style>
+<body>
+
+
+   
+
+
+    <form class="container">
+        <h1 class="title">Admin verification page</h1>
+
+       
+
+        <label for="">Enter Your name:</label>
+        <input type="text" class="name" name="name" required>
+
+        <label for="">What is 2+2:</label>
+        <input type="number" class="ten" id="" name="ten" required>
+
+        <label for="">Enter your Private key:</label>
+        <input type="text" name="key" class="key" required>
+
+        <h3 class="notification"></h3>
+
+        <input type="submit" value="Verify" name="verify" class="verify">
+</form>
+
+
+<script>
+ let nam = document.querySelector(".name");
+ let ans = document.querySelector(".ten");
+ let key = document.querySelector(".key");
+ let verify_btn = document.querySelector(".verify");
+ let notification = document.querySelector(".notification");
+
+
+ //input values
+ let name = nam.value;
+ let ansr = ans.value;
+ let keys = key.value;
+
+ verify_btn.addEventListener("click",
+    ()=>{
+        
+       if(name == "I am not a user" && ansr == 2010 && keys == "qwerty123456"){
+          window.location.href = "home.php";
+       }
+       else{
+        setInterval(
+            ()=>{
+                notification.textContent = "Details provided are incorrect!!!";
+            },
+            5000
+        )
+        clearInterval();
+       }
+    }
+ )
+</script>
+</body>
+</html>
